@@ -1,0 +1,137 @@
+﻿@model FixAssetManagement.Models.Employee
+
+
+@{
+    ViewData["Title"] = Model == null? "Create" : "Edit";
+}
+
+<h1>@ViewData["Title"] Employee</h1>
+
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="@ViewData["Title"]" enctype="multipart/form-data">
+            <div asp-validation-summary"ModelOnly" class="text-danger"></div>
+
+            @*<div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <input asp-for="EmployeeId" class="form-control" readonly/>
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <label asp-for="YearOfPurchase" class="control-label"></label>
+                <input asp-for="YearOfPurchase" class="form-control" />
+                <span asp-validation-for="YearOfPurchase" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="HistoricalCost" class="control-label"></label>
+                <input asp-for="HistoricalCost" class="form-control" />
+                <span asp-validation-for="HistoricalCost" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PurchaseOrder" class="control-label"></label>
+                <input asp-for="PurchaseOrder" class="form-control" />
+                <span asp-validation-for="PurchaseOrder" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Specification" class="control-label"></label>
+                <textarea asp-for="Specification" class="form-control"></textarea>
+                <span asp-validation-for="Specification" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Rate" class="control-label"></label>
+                <input asp-for="Rate" class="form-control"/>
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AccumulatedBalance" class="control-label"></label>
+                <input asp-for="AccumulatedBalance" class="form-control"/>
+                <span asp-validation-for="AccumulatedBalance" class="text-danger"></span>
+            </div>
+
+
+           @* <div class="form-group">
+                <label asp-for="EmployeeName" class="control-label"></label>
+                <input asp-for="EmployeeName" class="form-control" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>*@
+
+           
+
+
+
+            <div class="form-group">
+                <label asp-for="ImageUser" class="control-label"></label>
+                <input type="file" asp-for="ImageUser" class="form-control" />
+                <span asp-validation-for="ImageUser" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="HiringDate" class="control-label"></label>
+                <input asp-for="HiringDate" class="form-control" />
+                <span asp-validation-for="HiringDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NationalId" class="control-label"></label>
+                <input asp-for="NationalId" class="form-control" />
+                <span asp-validation-for="NationalId" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <select asp-for="DepartmentId" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Departments,"DepartmentId","DepartmentName"))">
+                        <option value="">Select Department...</option>
+                </select>
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group"> 
+                
+                
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+</div>

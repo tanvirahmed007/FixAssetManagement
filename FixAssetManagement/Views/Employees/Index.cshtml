@@ -1,0 +1,145 @@
+﻿@model IEnumerable<FixAssetManagement.Models.Employee>
+
+
+@{
+    ViewData["Title"] = "FAMS";
+}
+
+<h1>Fix Asset Management System</h1>
+
+<button class="btn btn-primary">
+    <a class="text-dark" asp-action="Create">Create New</a>
+</button>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfPurchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoricalCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Specification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccumulatedBalance)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUser)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HiringDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NationalId)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Department.DepartmentName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearOfPurchase)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.HistoricalCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseOrder)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specification)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccumulatedBalance)
+                </td>
+
+                <td>
+                    <img src="Images/@item.ImageUser" style="width:35px;height:35px;" />
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HiringDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NationalId)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId}) |
+                    @*@Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey*/}) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId}) 
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
