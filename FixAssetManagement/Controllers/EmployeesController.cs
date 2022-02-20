@@ -15,6 +15,7 @@ namespace FixAssetManagement.Controllers
         }
         public IActionResult Index()
         {
+            count();
             var Result = _context.Employees.Include(x=>x.Department)
                 ./*OrderBy(x=>x.EmployeeName).*/ToList();
             return View(Result);
@@ -98,6 +99,12 @@ namespace FixAssetManagement.Controllers
             {
                 model.ImageUser = model.ImageUser;
             }
+        }
+
+        public void count()
+        {
+            ViewBag.displayCount = _context.Employees.ToList();
+            ViewBag.Count = _context.Employees.Count();
         }
     }
 }
