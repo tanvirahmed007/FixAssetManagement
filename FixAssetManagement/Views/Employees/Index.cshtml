@@ -7,9 +7,52 @@
 
 <h1>Fix Asset Management System</h1>
 
-<button class="btn btn-primary">
+@*<button class="btn btn-primary">
     <a class="text-dark" asp-action="Create">Create New</a>
-</button>
+</button>*@
+
+<div class="info-tables mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="card bg-primary">
+                    <button class="btn btn-primary">Total Asset</button>
+                    <h1 class="text-center">@ViewBag.Count</h1>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3">
+                <div class="card bg-success">
+                    <button class="btn btn-success">Total Assigned Asset</button>
+                    <h1 class="text-center">@ViewBag.Count</h1>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3">
+                <div class="card bg-secondary">
+                    <button class="btn btn-secondary">Total Unassigned Asset</button>
+                    <h1 class="text-center">@ViewBag.Count</h1>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3">
+                <div class="card bg-warning">
+                    <button class="btn btn-warning">Total Employees</button>
+                    <h1 class="text-center">@ViewBag.Count</h1>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 mt-4">
+                
+                    <button class="btn btn-danger">
+                        <a asp-action="Create" class="text-decoration-none text-white">Add New Asset</a>
+                    </button>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 <table class="table">
 
