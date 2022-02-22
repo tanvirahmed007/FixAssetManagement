@@ -101,6 +101,7 @@ namespace FixAssetManagement.Controllers
             }
         }
 
+        //count the inputs
         public void count()
         {
             ViewBag.displayCount = _context.Employees.ToList();

@@ -92,6 +92,71 @@
                 <span asp-validation-for="ImageUser" class="text-danger"></span>
             </div>
 
+
+            <script>
+                function changeStatus()
+                {
+                    var status = document.getElementById("balanceStatus");
+
+                    if(status.value == "S")
+                    {
+                        document.getElementById("desbalance").style.visibility="hidden";
+                    }
+                    else{
+                        document.getElementById("desbalance").style.visibility="visible";
+                    }
+                }
+
+                //calculate depriciation value
+
+                function depriciation()
+                {
+                    //var depresult = (mainValue - 0)/year;
+                    var mainValue = window.prompt("Enter Main Value: ");
+                    var per = window.prompt("Enter Percent: ");
+
+                    mainValue = parseFloat(mainValue);
+                    per = parseFloat(per);
+
+                    const result=(mainValue*per)/100;
+
+                    alert("For Depriciation Result"+" "+ result +" "+ "/per year");
+                }
+
+                //Static Value
+
+                function staticvalue()
+                {
+                    //var depresult = (mainValue - 0)/year;
+                    var MainValue = window.prompt("Enter Main Value: ");
+                    var Year = window.prompt("Enter Year: ");
+
+                    MainValue = parseFloat(MainValue);
+                    Year = parseInt(Year);
+
+                    const result=(MainValue-0)/Year;
+
+                    alert(For Depriciation Result"+" "+ result +" "+ "/per year");
+                }
+
+            </script>
+
+            <div class="form-group mt-5 mb-3">
+                <label for="Balance" name="Balance">Balance</label>
+                <select class="form-control mt-4" id="balanceStatus" onchange="changeStatus()">
+                    
+                    <option value="S">None</option>
+                    <option onclick="depriciation()" value="D">Depriciation</option>
+                    <option onclick="staticvalue()" value="T">Static</option>
+                </select>
+
+                <div class="mt-4" id="desbalance">
+                    <input type="text" name="desbalance" class="form-control" placeholder="Submit Your Value" />
+                    
+                </div>
+
+            </div>
+
             @*<div class="form-group">
                 <label asp-for="BirthDate" class="control-label"></label>
                 <input asp-for="BirthDate" class="form-control" />
@@ -128,7 +193,7 @@
             <div class="form-group"> 
                 
                 
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary mt-4" />
             </div>
         </form>
     </div>
