@@ -106,5 +106,12 @@ namespace FixAssetManagement.Controllers
             ViewBag.displayCount = _context.Employees.ToList();
             ViewBag.Count = _context.Employees.Count();
         }
+
+        //for details
+        public ActionResult Detail(int id)
+        {
+            var data = _context.Employees.Where(x => x.EmployeeId == id).FirstOrDefault();
+            return View(data);
+        }
     }
 }
