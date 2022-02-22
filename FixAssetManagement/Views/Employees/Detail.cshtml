@@ -1,0 +1,108 @@
+﻿@model FixAssetManagement.Models.Employee
+
+
+@{    
+    ViewBag.Title = "Detail";    
+}    
+    
+<div>Detail</div>    
+    
+<div>    
+    <div>Employee</div>    
+    <hr />    
+    <dl class="dl-horizontal">    
+        <dt>    
+            @Html.DisplayNameFor(model => model.YearOfPurchase)    
+        </dt>    
+    
+        <dd>    
+            @Html.DisplayFor(model => model.YearOfPurchase)    
+        </dd>  
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.HistoricalCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistoricalCost)
+        </dd>
+    
+        <dt>    
+            @Html.DisplayNameFor(model => model.PurchaseOrder)    
+        </dt>
+        
+        <dd>    
+            @Html.DisplayFor(model => model.PurchaseOrder)    
+        </dd>
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>    
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>    
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Specification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specification)
+        </dd>  
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccumulatedBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccumulatedBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUser)
+            
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.DepartmentId)
+        </dd>
+    
+    </dl>    
+</div>    
+<p>    
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }) |    
+    @Html.ActionLink("Back to List", "Index")    
+</p>    
