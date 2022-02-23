@@ -44,29 +44,54 @@ namespace FixAssetManagement.Controllers
             return View();
         }
 
-        
-
-        public IActionResult Edit(int? Id)
+        [HttpGet]
+        public ActionResult Edit(int id)
         {
-            ViewBag.Departments = _context.Departments.OrderBy(x => x.DepartmentName).ToList();
-            var Result = _context.Employees.Find(Id);
-            return View("Create",Result);
+            var data = _context.Employees.Where(x => x.EmployeeId == id).FirstOrDefault();
+            return View(data);
         }
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(Employee model)
+        public ActionResult Edit(Employee Model)
         {
-            UploadImage(model);
-            if(ModelState.IsValid)
+            var data = _context.Employees.Where(x => x.EmployeeId == Model.EmployeeId).FirstOrDefault();
+            if (data != null)
             {
-                _context.Employees.Update(model);
+                data.YearOfPurchase = Model.YearOfPurchase;
+                data.HistoricalCost = Model.HistoricalCost;
+                data.PurchaseOrder = Model.PurchaseOrder;
+                data.UserName = Model.UserName;
+                data.Location = Model.Location;
+                data.Specification = Model.Specification;
+                data.Description = Model.Description;
+                data.Rate = Model.Rate;
+                data.AccumulatedBalance = Model.AccumulatedBalance;
                 _context.SaveChanges();
-                return RedirectToAction("Index");
             }
-            ViewBag.Departments = _context.Departments.OrderBy(x => x.DepartmentName).ToList();
-            return View(model);
+
+            return RedirectToAction("index");
         }
+
+        //public IActionResult Edit(int? Id)
+        //{
+        //    ViewBag.Departments = _context.Departments.OrderBy(x => x.DepartmentName).ToList();
+        //    var Result = _context.Employees.Find(Id);
+        //    return View("Create",Result);
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Edit(Employee model)
+        //{
+        //    UploadImage(model);
+        //    if(ModelState.IsValid)
+        //    {
+        //        _context.Employees.Update(model);
+        //        _context.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.Departments = _context.Departments.OrderBy(x => x.DepartmentName).ToList();
+        //    return View(model);
+        //}
 
         public IActionResult Delete(int? Id)
         {
