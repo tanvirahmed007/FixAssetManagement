@@ -18,6 +18,9 @@ namespace FixAssetManagement.Controllers
             count();
             var Result = _context.Employees.Include(x=>x.Department)
                 ./*OrderBy(x=>x.EmployeeName).*/ToList();
+
+            
+
             return View(Result);
         }
 
@@ -139,5 +142,7 @@ namespace FixAssetManagement.Controllers
             var data = _context.Employees.Where(x => x.EmployeeId == id).FirstOrDefault();
             return View(data);
         }
+
+
     }
 }

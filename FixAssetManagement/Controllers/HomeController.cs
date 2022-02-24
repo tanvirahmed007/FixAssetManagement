@@ -15,6 +15,7 @@ namespace FixAssetManagement.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
