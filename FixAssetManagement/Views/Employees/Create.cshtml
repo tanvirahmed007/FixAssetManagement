@@ -5,7 +5,7 @@
     ViewData["Title"] = Model == null? "Create" : "Edit";
 }
 
-<h1>@ViewData["Title"] Employee</h1>
+<h1>@ViewData["Title"] Asset</h1>
 
 
 <hr />
@@ -57,11 +57,7 @@
                 <span asp-validation-for="Specification" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
+            
 
             <div class="form-group">
                 <label asp-for="Rate" class="control-label"></label>
@@ -69,11 +65,7 @@
                 <span asp-validation-for="Rate" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="AccumulatedBalance" class="control-label"></label>
-                <input asp-for="AccumulatedBalance" class="form-control"/>
-                <span asp-validation-for="AccumulatedBalance" class="text-danger"></span>
-            </div>
+            
 
 
            @* <div class="form-group">
@@ -109,53 +101,87 @@
 
                 //calculate depriciation value
 
-                function depriciation()
+                function depreciation()
                 {
                     //var depresult = (mainValue - 0)/year;
-                    var mainValue = window.prompt("Enter Main Value: ");
-                    var per = window.prompt("Enter Percent: ");
+                    let mainvalue = window.prompt("Enter Main Value: ");
+                    let years = window.prompt("Enter Years Of Service: ");
+                    let purchaseYears = window.prompt("Enter the purchase year: ");
+                    
 
-                    mainValue = parseFloat(mainValue);
-                    per = parseFloat(per);
 
-                    const result=(mainValue*per)/100;
+                    mainvalue = parseFloat(mainvalue);
+                    years = parseInt(years);
+                    
+                    purchaseYears = parseInt(purchaseYears);
 
-                    alert("For Depriciation Result"+" "+ result +" "+ "/per year");
+                    let doubleDepreciationRate = ((1 / years) * 100 * 2);
+                    let current = new Date().getFullYear();
+                    let yearOfService = current - purchaseYears;
+
+                    for (let i = 0; i < yearOfService; i++)
+                    {
+                        let depreciationAmount = (mainvalue * doubleDepreciationRate) / 100;
+                        
+                        
+                        mainvalue = mainvalue - depreciationAmount;
+                        
+                    }
+                    document.getElementById("hgf").value = mainvalue;
+                    console.log(mainvalue);
+                    
                 }
-
+             
+        
                 //Static Value
 
-                function staticvalue()
+                function straightline()
                 {
+
                     //var depresult = (mainValue - 0)/year;
-                    var MainValue = window.prompt("Enter Main Value: ");
+                    var BookValue = window.prompt("Enter Main Value: ");
                     var Year = window.prompt("Enter Year: ");
+                    var YearFrom = window.prompt("Enter Year from: ");
 
-                    MainValue = parseFloat(MainValue);
+                    BookValue = parseFloat(BookValue);
                     Year = parseInt(Year);
+                    YearFrom = parseInt(YearFrom);
 
-                    const result=(MainValue-0)/Year;
+                    //const result=(MainValue-0)/Year;
 
-                    alert(For Depriciation Result"+" "+ result +" "+ "/per year");
+                    var RemainingBalance;
+                    var currentyear = new Date().getFullYear();
+
+                    RemainingBalance = (BookValue - ((BookValue / Year) * ( currentyear - YearFrom)));
+
+                    
+                    document.getElementById("hgf").value = RemainingBalance;
+                    
+                    
                 }
 
             </script>
 
-            <div class="form-group mt-5 mb-3">
-                <label for="Balance" name="Balance">Balance</label>
-                <select class="form-control mt-4" id="balanceStatus" onchange="changeStatus()">
+            
+
+            <div class="form-group">
+                <label asp-for="AccumulatedBalance" class="control-label mt-4">Balance</label>
+                <select class="form-control" id="balanceStatus" onchange="changeStatus()">
                     
                     <option value="S">None</option>
-                    <option onclick="depriciation()" value="D">Depriciation</option>
-                    <option onclick="staticvalue()" value="T">Static</option>
+                    <option onclick="depreciation()" value="D">Double Declining</option>
+                    <option onclick="straightline()" value="T">Straight Line</option>
                 </select>
 
                 <div class="mt-4" id="desbalance">
-                    <input type="text" name="desbalance" class="form-control" placeholder="Submit Your Value" />
-                    
+                    <input asp-for="AccumulatedBalance" type="text" id="hgf" name="AccumulatedBalance" class="form-control" placeholder="Submit Your Value" />
+                    <span asp-validation-for="AccumulatedBalance" class="text-danger"></span>
                 </div>
-
+                
+                
             </div>
+
+
 
             @*<div class="form-group">
                 <label asp-for="BirthDate" class="control-label"></label>

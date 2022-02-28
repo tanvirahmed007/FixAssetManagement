@@ -65,7 +65,7 @@ namespace FixAssetManagement.Controllers
                 data.UserName = Model.UserName;
                 data.Location = Model.Location;
                 data.Specification = Model.Specification;
-                data.Description = Model.Description;
+                
                 data.Rate = Model.Rate;
                 data.AccumulatedBalance = Model.AccumulatedBalance;
                 _context.SaveChanges();
