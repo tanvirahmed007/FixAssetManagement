@@ -55,8 +55,8 @@ namespace FixAssetManagement.Models
 
 
 
-        [Display(Name ="Description")]
-        public string Description { get; set; }
+        //[Display(Name ="Description")]
+        //public string Description { get; set; }
 
 
 
@@ -71,7 +71,7 @@ namespace FixAssetManagement.Models
 
 
 
-        [Display(Name ="Accumulated")]
+        [Display(Name ="Accumulated Balance")]
         public decimal AccumulatedBalance { get; set; }
 
 

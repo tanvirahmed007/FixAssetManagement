@@ -30,7 +30,7 @@
             //var FutureTime = (DateTime.Now.Year + Year);
 
             RemainingBalance = BookValue - ((BookValue / Year) * (DateTime.Now.Year - YearForm));
-            Console.WriteLine("Value of Remaining Balance: {0}", RemainingBalance);
+            //Console.WriteLine("Value of Remaining Balance: {0}", RemainingBalance);
 
             //for(int i=FutureTime; i<=DateTime.Now.Year; i--)
             //{
@@ -57,10 +57,7 @@
             for (int i = 0; i < yearOfService; i++)
             {
                 decimal depreciationAmount = (decimal)(bookValue * doubleDepreciationRate) / 100;
-                Console.Write("Depreciation Amount of year ");
-                Console.Write(i + 1);
-                Console.Write(" - ");
-                Console.WriteLine(depreciationAmount);
+                Console.WriteLine($"Depreciation Amount of year {i+1} - {depreciationAmount}");
                 bookValue = bookValue - depreciationAmount;
             }
 
