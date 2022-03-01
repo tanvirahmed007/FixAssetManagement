@@ -16,3 +16,37 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.create-fix-asset .form-group{
+    margin-inline: 5px;
+}
+
+.create-fix-asset .control-label{
+    margin-bottom: 5px
+}
+
+.create-fix-asset .first-six{
+    margin-bottom: 4%;
+}
+
+.create-fix-asset .create-submit{
+    width: 20%;
+}
+
+/*.desbalance .form-control{
+    height: 30px !important;
+}*/
+
+.select{
+    height: 40px;
+    width: 70%;
+}
+
+#fields{
+    margin-inline: 8px;
+}
+
+#fields>input{
+    margin-bottom:8px;
+    width: 100%;
+}

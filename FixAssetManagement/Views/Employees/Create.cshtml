@@ -10,8 +10,8 @@
 
 <hr />
 
-<div class="row">
-    <div class="col-md-4">
+<div class="create-fix-asset row">
+    <div>
         <form asp-action="@ViewData["Title"]" enctype="multipart/form-data">
             <div asp-validation-summary"ModelOnly" class="text-danger"></div>
 
@@ -21,7 +21,8 @@
                 <span asp-validation-for="EmployeeId" class="text-danger"></span>
             </div>*@
 
-            <div class="form-group">
+            <div class="first-six d-flex">
+                <div class="form-group">
                 <label asp-for="YearOfPurchase" class="control-label"></label>
                 <input asp-for="YearOfPurchase" class="form-control" />
                 <span asp-validation-for="YearOfPurchase" class="text-danger"></span>
@@ -53,17 +54,19 @@
 
             <div class="form-group">
                 <label asp-for="Specification" class="control-label"></label>
-                <textarea asp-for="Specification" class="form-control"></textarea>
+                <input asp-for="Specification" class="form-control"/>
                 <span asp-validation-for="Specification" class="text-danger"></span>
             </div>
 
+            </div>
             
 
-            <div class="form-group">
-                <label asp-for="Rate" class="control-label"></label>
-                <input asp-for="Rate" class="form-control"/>
-                <span asp-validation-for="Rate" class="text-danger"></span>
-            </div>
+            <div class="last-six d-flex">
+                <div class="form-group">
+                    <label asp-for="Rate" class="control-label"></label>
+                    <input asp-for="Rate" class="form-control"/>
+                    <span asp-validation-for="Rate" class="text-danger"></span>
+                </div>
 
             
 
@@ -86,34 +89,55 @@
 
 
             <script>
+
+
                 function changeStatus()
                 {
                     var status = document.getElementById("balanceStatus");
+                    
 
-                    if(status.value == "S")
+                    if(status.value == "D")
                     {
-                        document.getElementById("desbalance").style.visibility="hidden";
+                        document.getElementById("fields").style.visibility="visible";
+                    }
+                    else if(status.value == "T")
+                    {
+                        document.getElementById("fields").style.visibility="visible";
                     }
                     else{
-                        document.getElementById("desbalance").style.visibility="visible";
+                        document.getElementById("fields").style.visibility="hidden";
                     }
+                    
                 }
 
                 //calculate depriciation value
-
+                
                 function depreciation()
                 {
+                    var selectedValue = document.getElementById("balanceStatus").value;
+                    
+                    // if D
+                    if(selectedValue == 'D')
+                    {
+                        doubleDepreciation();
+                    }
+                    // call strait line
+                    // else
+                    else if(selectedValue == 'T'){
+                        straightline();
+                    }
+                    
+                    //Call
+                }
+
+
+                function doubleDepreciation()
+                {
                     //var depresult = (mainValue - 0)/year;
-                    let mainvalue = window.prompt("Enter Main Value: ");
-                    let years = window.prompt("Enter Years Of Service: ");
-                    let purchaseYears = window.prompt("Enter the purchase year: ");
+                    let mainvalue = parseFloat(document.getElementById("bookvalue").value);
+                    let years = parseInt(document.getElementById("years").value);
+                    let purchaseYears = parseInt(document.getElementById("fromyear").value);
                     
-
-
-                    mainvalue = parseFloat(mainvalue);
-                    years = parseInt(years);
-                    
-                    purchaseYears = parseInt(purchaseYears);
 
                     let doubleDepreciationRate = ((1 / years) * 100 * 2);
                     let current = new Date().getFullYear();
@@ -128,7 +152,7 @@
                         
                     }
                     document.getElementById("hgf").value = mainvalue;
-                    console.log(mainvalue);
+                    
                     
                 }
              
@@ -139,9 +163,9 @@
                 {
 
                     //var depresult = (mainValue - 0)/year;
-                    var BookValue = window.prompt("Enter Main Value: ");
-                    var Year = window.prompt("Enter Year: ");
-                    var YearFrom = window.prompt("Enter Year from: ");
+                    var BookValue = parseFloat(document.getElementById("bookvalue").value);
+                    var Year = parseInt(document.getElementById("years").value);
+                    var YearFrom = parseInt(document.getElementById("fromyear").value);
 
                     BookValue = parseFloat(BookValue);
                     Year = parseInt(Year);
@@ -165,17 +189,29 @@
             
 
             <div class="form-group">
-                <label asp-for="AccumulatedBalance" class="control-label mt-4">Balance</label>
-                <select class="form-control" id="balanceStatus" onchange="changeStatus()">
+                <label asp-for="AccumulatedBalance" class="control-label">Balance Type</label>
+                <div class="d-flex balance">
+                    <select class="select form-control" id="balanceStatus" onchange="changeStatus()">
                     
-                    <option value="S">None</option>
-                    <option onclick="depreciation()" value="D">Double Declining</option>
-                    <option onclick="straightline()" value="T">Straight Line</option>
-                </select>
+                        <option>None</option>
+                        <option value="D">Double Declining</option>
+                        <option value="T">Straight Line</option>
+                    </select>
 
-                <div class="mt-4" id="desbalance">
-                    <input asp-for="AccumulatedBalance" type="text" id="hgf" name="AccumulatedBalance" class="form-control" placeholder="Submit Your Value" />
+                <div id="fields">
+                    <input type="text" id="bookvalue" name="" class="form-control" placeholder="Book Value" onblur="depreciation()" />
+                    <input type="text" id="years" name="" class="form-control" placeholder="Years of service" onblur="depreciation()" />
+                    <input type="text" id="fromyear" name="" class="form-control" placeholder="From Year"  onblur="depreciation()" />
+                    
+
+                </div>
+
+                <div id="desbalance">
+                    <input asp-for="AccumulatedBalance" type="text" id="hgf" name="AccumulatedBalance" class="form-control" placeholder="Result" />
                     <span asp-validation-for="AccumulatedBalance" class="text-danger"></span>
+                </div>
+
+                
                 </div>
                 
                 
@@ -208,18 +244,19 @@
             </div>*@
 
             <div class="form-group">
-                <label asp-for="DepartmentId" class="control-label"></label>
+                <label asp-for="Department" class="control-label">Depreciation Type</label>
                 <select asp-for="DepartmentId" class="form-control"
-                        asp-items="@(new SelectList(ViewBag.Departments,"DepartmentId","DepartmentName"))">
-                        <option value="">Select Department...</option>
+                        asp-items="@(new SelectList(ViewBag.Departments,"DepartmentId","DepartmentName"))" onblur="depreciation()">
+                        <option value="">Select Depreciation Type...</option>
                 </select>
                 <span asp-validation-for="DepartmentId" class="text-danger"></span>
             </div>
+            </div>
 
-            <div class="form-group"> 
+            <div class="form-group text-center"> 
                 
                 
-                <input type="submit" value="Create" class="btn btn-primary mt-4" />
+                <input type="submit" value="Create" class="btn btn-primary create-submit mt-4" />
             </div>
         </form>
     </div>
