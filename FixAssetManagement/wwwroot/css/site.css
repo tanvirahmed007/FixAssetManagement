@@ -47,6 +47,14 @@ body {
 }
 
 #fields>input{
-    margin-bottom:8px;
+    margin-bottom:8px !important;
     width: 100%;
+}
+
+.first-six .form-group{
+    margin-bottom: 20px;
+}
+
+.last-six .form-group {
+    margin-bottom: 20px;
 }

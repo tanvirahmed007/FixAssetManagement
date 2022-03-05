@@ -96,7 +96,7 @@ namespace FixAssetManagement.Models
 
 
 
-
+        
 
         //[Display(Name ="Birth Date")][DataType(DataType.Date)]
         //public DateTime BirthDate { get; set; }
