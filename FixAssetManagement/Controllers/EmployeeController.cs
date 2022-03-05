@@ -22,6 +22,7 @@ namespace FixAssetManagement.Controllers
             
 
             return View(Result);
+            
         }
 
         public IActionResult Create()
@@ -142,6 +143,10 @@ namespace FixAssetManagement.Controllers
             var data = _context.Employees.Where(x => x.EmployeeId == id).FirstOrDefault();
             return View(data);
         }
+
+
+
+
 
 
     }

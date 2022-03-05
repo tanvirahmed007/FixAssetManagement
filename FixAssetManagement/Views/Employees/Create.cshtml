@@ -10,80 +10,77 @@
 
 <hr />
 
+
+
+
 <div class="create-fix-asset row">
     <div>
         <form asp-action="@ViewData["Title"]" enctype="multipart/form-data">
             <div asp-validation-summary"ModelOnly" class="text-danger"></div>
 
-            @*<div class="form-group">
-                <label asp-for="EmployeeId" class="control-label"></label>
-                <input asp-for="EmployeeId" class="form-control" readonly/>
-                <span asp-validation-for="EmployeeId" class="text-danger"></span>
-            </div>*@
+            
+        <div class="row">
+        
 
-            <div class="first-six d-flex">
+            <div class="first-six col-lg-6 col-md-6">
                 <div class="form-group">
-                <label asp-for="YearOfPurchase" class="control-label"></label>
-                <input asp-for="YearOfPurchase" class="form-control" />
-                <span asp-validation-for="YearOfPurchase" class="text-danger"></span>
-            </div>
+                    
+                    <input asp-for="YearOfPurchase" class="form-control" placeholder="Purchase Of Year"/>
+                    <span asp-validation-for="YearOfPurchase" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="HistoricalCost" class="control-label"></label>
-                <input asp-for="HistoricalCost" class="form-control" />
-                <span asp-validation-for="HistoricalCost" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    
+                    <input asp-for="HistoricalCost" class="form-control" placeholder="Historical Cost" />
+                    <span asp-validation-for="HistoricalCost" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="PurchaseOrder" class="control-label"></label>
-                <input asp-for="PurchaseOrder" class="form-control" />
-                <span asp-validation-for="PurchaseOrder" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    
+                    <input asp-for="PurchaseOrder" class="form-control" placeholder="Purchase Order" />
+                    <span asp-validation-for="PurchaseOrder" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    
+                    <input asp-for="UserName" class="form-control" placeholder="User Name" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    
+                    <input asp-for="Location" class="form-control" placeholder="Location" />
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Specification" class="control-label"></label>
-                <input asp-for="Specification" class="form-control"/>
-                <span asp-validation-for="Specification" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    
+                    <input asp-for="Specification" class="form-control" placeholder="Specification"/>
+                    <span asp-validation-for="Specification" class="text-danger"></span>
+                </div>
 
             </div>
             
 
-            <div class="last-six d-flex">
+            <div class="last-six col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label asp-for="Rate" class="control-label"></label>
-                    <input asp-for="Rate" class="form-control"/>
+                    
+                    <input asp-for="Rate" class="form-control" placeholder="Rate" />
                     <span asp-validation-for="Rate" class="text-danger"></span>
                 </div>
 
             
 
 
-           @* <div class="form-group">
-                <label asp-for="EmployeeName" class="control-label"></label>
-                <input asp-for="EmployeeName" class="form-control" />
-                <span asp-validation-for="EmployeeName" class="text-danger"></span>
-            </div>*@
+           
 
            
 
 
 
             <div class="form-group">
-                <label asp-for="ImageUser" class="control-label"></label>
-                <input type="file" asp-for="ImageUser" class="form-control" />
+                
+                <input type="file" asp-for="ImageUser" class="form-control" placeholder="User Image Upload" />
                 <span asp-validation-for="ImageUser" class="text-danger"></span>
             </div>
 
@@ -189,19 +186,19 @@
             
 
             <div class="form-group">
-                <label asp-for="AccumulatedBalance" class="control-label">Balance Type</label>
-                <div class="d-flex balance">
-                    <select class="select form-control" id="balanceStatus" onchange="changeStatus()">
+                
+                <div class="balance">
+                    <select asp-for="DepartmentId" class=" select form-control" id="balanceStatus" onchange="changeStatus()">
                     
-                        <option>None</option>
+                        <option>Select Depreciation Type</option>
                         <option value="D">Double Declining</option>
                         <option value="T">Straight Line</option>
                     </select>
 
-                <div id="fields">
-                    <input type="text" id="bookvalue" name="" class="form-control" placeholder="Book Value" onblur="depreciation()" />
-                    <input type="text" id="years" name="" class="form-control" placeholder="Years of service" onblur="depreciation()" />
-                    <input type="text" id="fromyear" name="" class="form-control" placeholder="From Year"  onblur="depreciation()" />
+                <div id="fields mt-5">
+                    <input type="text" id="bookvalue" name="" class="form-control mb-3 mt-3" placeholder="Book Value" onblur="depreciation()" />
+                    <input type="text" id="years" name="" class="form-control mb-3" placeholder="Years of service" onblur="depreciation()" />
+                    <input type="text" id="fromyear" name="" class="form-control mb-3" placeholder="From Year"  onblur="depreciation()" />
                     
 
                 </div>
@@ -219,38 +216,18 @@
 
 
 
+            
+
             @*<div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Salary" class="control-label"></label>
-                <input asp-for="Salary" class="form-control" />
-                <span asp-validation-for="Salary" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="HiringDate" class="control-label"></label>
-                <input asp-for="HiringDate" class="form-control" />
-                <span asp-validation-for="HiringDate" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="NationalId" class="control-label"></label>
-                <input asp-for="NationalId" class="form-control" />
-                <span asp-validation-for="NationalId" class="text-danger"></span>
-            </div>*@
-
-            <div class="form-group">
                 <label asp-for="Department" class="control-label">Depreciation Type</label>
                 <select asp-for="DepartmentId" class="form-control"
-                        asp-items="@(new SelectList(ViewBag.Departments,"DepartmentId","DepartmentName"))" onblur="depreciation()">
+                        asp-items="@(new SelectList(ViewBag.Departments,"DepartmentId","DepartmentName"))" >
                         <option value="">Select Depreciation Type...</option>
                 </select>
                 <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>*@
             </div>
+            
             </div>
 
             <div class="form-group text-center"> 
