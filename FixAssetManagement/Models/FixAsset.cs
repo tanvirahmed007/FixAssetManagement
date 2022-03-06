@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FixAssetManagement.Models
 {
     [Table("Employees",Schema ="dbo")]
-    public class Employee
+    public class FixAsset
     {
         [Key]
         [Display(Name="ID")]
