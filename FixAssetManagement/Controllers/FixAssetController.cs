@@ -5,18 +5,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FixAssetManagement.Controllers
 {
-    public class EmployeesController : Controller
+    public class FixAssetsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EmployeesController(ApplicationDbContext context)
+        public FixAssetsController(ApplicationDbContext context)
         {
             _context = context;
         }
         public IActionResult Index()
         {
             count();
-            var Result = _context.Employees.Include(x=>x.Department)
+            var Result = _context.FixAssets.Include(x=>x.Department)
                 ./*OrderBy(x=>x.EmployeeName).*/ToList();
 
             
@@ -34,12 +34,12 @@ namespace FixAssetManagement.Controllers
         [HttpPost]
 
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Employee model)
+        public IActionResult Create(FixAsset model)
         {
             UploadImage(model);
             if (ModelState.IsValid)
             {
-                _context.Employees.Add(model);
+                _context.FixAssets.Add(model);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
 
@@ -51,13 +51,13 @@ namespace FixAssetManagement.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var data = _context.Employees.Where(x => x.EmployeeId == id).FirstOrDefault();
+            var data = _context.FixAssets.Where(x => x.EmployeeId == id).FirstOrDefault();
             return View(data);
         }
         [HttpPost]
-        public ActionResult Edit(Employee Model)
+        public ActionResult Edit(FixAsset Model)
         {
-            var data = _context.Employees.Where(x => x.EmployeeId == Model.EmployeeId).FirstOrDefault();
+            var data = _context.FixAssets.Where(x => x.EmployeeId == Model.EmployeeId).FirstOrDefault();
             if (data != null)
             {
                 data.YearOfPurchase = Model.YearOfPurchase;
@@ -100,16 +100,16 @@ namespace FixAssetManagement.Controllers
         public IActionResult Delete(int? Id)
         {
             
-            var Result = _context.Employees.Find(Id);
+            var Result = _context.FixAssets.Find(Id);
             if(Result != null)
             {
-                _context.Employees.Remove(Result);
+                _context.FixAssets.Remove(Result);
                 _context.SaveChanges();
             }
             return RedirectToAction(nameof(Index));
         }
 
-        private void UploadImage(Employee model)
+        private void UploadImage(FixAsset model)
         {
             var file = HttpContext.Request.Form.Files;
             if (file.Count() > 0)
@@ -133,14 +133,14 @@ namespace FixAssetManagement.Controllers
         //count the inputs
         public void count()
         {
-            ViewBag.displayCount = _context.Employees.ToList();
-            ViewBag.Count = _context.Employees.Count();
+            ViewBag.displayCount = _context.FixAssets.ToList();
+            ViewBag.Count = _context.FixAssets.Count();
         }
 
         //for details
         public ActionResult Detail(int id)
         {
-            var data = _context.Employees.Where(x => x.EmployeeId == id).FirstOrDefault();
+            var data = _context.FixAssets.Where(x => x.EmployeeId == id).FirstOrDefault();
             return View(data);
         }
 

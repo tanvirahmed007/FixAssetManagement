@@ -17,6 +17,6 @@ namespace FixAssetManagement.Data
         public DbSet<Department> Departments { get; set; }
 
        
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<FixAsset> FixAssets { get; set; }
     }
 }
