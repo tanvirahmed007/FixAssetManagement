@@ -14,8 +14,6 @@ namespace FixAssetManagement.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Department> Departments { get; set; }
-
        
         public DbSet<FixAsset> FixAssets { get; set; }
     }

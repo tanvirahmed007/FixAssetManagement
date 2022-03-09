@@ -24,35 +24,30 @@
             <div class="col-lg-3 col-md-3">
                 <div class="card bg-success">
                     <button class="btn btn-success">Total Assigned Asset</button>
-                    <h1 class="text-center">@ViewBag.Count</h1>
+                    <h1 class="text-center">0</h1>
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-3">
                 <div class="card bg-secondary">
                     <button class="btn btn-secondary">Total Unassigned Asset</button>
-                    <h1 class="text-center">@ViewBag.Count</h1>
+                    <h1 class="text-center">0</h1>
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-3">
                 <div class="card bg-warning">
                     <button class="btn btn-warning">Total Employees</button>
-                    <h1 class="text-center">@ViewBag.Count</h1>
+                    <h1 class="text-center">0</h1>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-3 mt-4">
-                
-                    <button class="btn btn-danger">
-                        <a asp-action="Create" class="text-decoration-none text-white">Add New Asset</a>
-                    </button>
-                    
-                
-            </div>
+            
         </div>
     </div>
 </div>
+
+
 
 <table class="table">
 
@@ -61,6 +56,11 @@
             @*<th>
                 @Html.DisplayNameFor(model => model.EmployeeId)
             </th>*@
+
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUser)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.YearOfPurchase)
             </th>
@@ -89,9 +89,7 @@
                 @Html.DisplayNameFor(model => model.AccumulatedBalance)
             </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUser)
-            </th>
+            
             @*<th>
                 @Html.DisplayNameFor(model => model.EmployeeName)
             </th>
@@ -107,10 +105,10 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NationalId)
-            </th>*@
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Department.DepartmentName)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -123,6 +121,11 @@
                 @*<td>
                     @Html.DisplayFor(modelItem => item.EmployeeId)
                 </td>*@
+
+                <td>
+                    <img src="Images/@item.ImageUser" style="width:35px;height:35px;" />
+                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.YearOfPurchase)
                 </td>
@@ -152,9 +155,7 @@
                     @Html.DisplayFor(modelItem => item.AccumulatedBalance)
                 </td>
 
-                <td>
-                    <img src="Images/@item.ImageUser" style="width:35px;height:35px;" />
-                </td>
+                
                 @*<td>
                     @Html.DisplayFor(modelItem => item.EmployeeName)
                 </td>
@@ -172,9 +173,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.NationalId)
                 </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
-                </td>
+
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId}) |
                     @Html.ActionLink("Details", "Detail", new { id = item.EmployeeId }) |

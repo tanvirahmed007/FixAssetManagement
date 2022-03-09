@@ -15,7 +15,7 @@
 
 <div class="create-fix-asset row">
     <div>
-        <form asp-action="@ViewData["Title"]" enctype="multipart/form-data">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary"ModelOnly" class="text-danger"></div>
 
             
@@ -23,6 +23,13 @@
         
 
             <div class="first-six col-lg-6 col-md-6">
+
+                <div class="form-group">
+                
+                <input type="file" asp-for="ImageUser" class="form-control" placeholder="User Image Upload" />
+                <span asp-validation-for="ImageUser" class="text-danger"></span>
+            </div>
+
                 <div class="form-group">
                     
                     <input asp-for="YearOfPurchase" class="form-control" placeholder="Purchase Of Year"/>
@@ -53,16 +60,21 @@
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
 
+                
+
+            </div>
+            
+
+            <div class="last-six col-lg-6 col-md-6">
+
+
                 <div class="form-group">
                     
                     <input asp-for="Specification" class="form-control" placeholder="Specification"/>
                     <span asp-validation-for="Specification" class="text-danger"></span>
                 </div>
 
-            </div>
-            
 
-            <div class="last-six col-lg-6 col-md-6">
                 <div class="form-group">
                     
                     <input asp-for="Rate" class="form-control" placeholder="Rate" />
@@ -78,11 +90,7 @@
 
 
 
-            <div class="form-group">
-                
-                <input type="file" asp-for="ImageUser" class="form-control" placeholder="User Image Upload" />
-                <span asp-validation-for="ImageUser" class="text-danger"></span>
-            </div>
+            
 
 
             <script>
@@ -188,7 +196,7 @@
             <div class="form-group">
                 
                 <div class="balance">
-                    <select asp-for="DepartmentId" class=" select form-control" id="balanceStatus" onchange="changeStatus()">
+                    <select  class=" select form-control" id="balanceStatus" onchange="changeStatus()">
                     
                         <option>Select Depreciation Type</option>
                         <option value="D">Double Declining</option>

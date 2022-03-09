@@ -88,7 +88,7 @@ namespace FixAssetManagement.Models
 
 
         
-        [Display(Name="Image User")]
+        [Display(Name="Product Image")]
         [Column(TypeName ="varchar(250)")]
         public string? ImageUser { get; set; }
 
@@ -119,13 +119,5 @@ namespace FixAssetManagement.Models
         //[MinLength(14)]
         //[Column(TypeName ="varchar(14)")]
         //public string NationalId { get; set; }
-
-
-
-
-
-        public int DepartmentId { get; set; }
-        [ForeignKey("DepartmentId")]
-        public Department? Department { get; set; }
     }
 }
