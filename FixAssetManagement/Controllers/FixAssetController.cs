@@ -16,7 +16,7 @@ namespace FixAssetManagement.Controllers
         public IActionResult Index()
         {
             count();
-            var Result = _context.FixAssets.Include(x=>x.Department)
+            var Result = _context.FixAssets
                 ./*OrderBy(x=>x.EmployeeName).*/ToList();
 
             
@@ -27,7 +27,6 @@ namespace FixAssetManagement.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Departments = _context.Departments.OrderBy(x=>x.DepartmentName).ToList();
             return View();
         }
 
@@ -44,7 +43,6 @@ namespace FixAssetManagement.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            ViewBag.Departments = _context.Departments.OrderBy(x => x.DepartmentName).ToList();
             return View();
         }
 
@@ -75,27 +73,7 @@ namespace FixAssetManagement.Controllers
             return RedirectToAction("index");
         }
 
-        //public IActionResult Edit(int? Id)
-        //{
-        //    ViewBag.Departments = _context.Departments.OrderBy(x => x.DepartmentName).ToList();
-        //    var Result = _context.Employees.Find(Id);
-        //    return View("Create",Result);
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Edit(Employee model)
-        //{
-        //    UploadImage(model);
-        //    if(ModelState.IsValid)
-        //    {
-        //        _context.Employees.Update(model);
-        //        _context.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.Departments = _context.Departments.OrderBy(x => x.DepartmentName).ToList();
-        //    return View(model);
-        //}
+        
 
         public IActionResult Delete(int? Id)
         {

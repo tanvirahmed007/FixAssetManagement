@@ -23,22 +23,10 @@
 
             YearForm = Convert.ToInt32(Console.ReadLine());
 
-            //Console.Write("Enter Year of Time: ");
-
-            //Future = Convert.ToInt32(Console.ReadLine());
-
-            //var FutureTime = (DateTime.Now.Year + Year);
+            
 
             RemainingBalance = BookValue - ((BookValue / Year) * (DateTime.Now.Year - YearForm));
-            //Console.WriteLine("Value of Remaining Balance: {0}", RemainingBalance);
-
-            //for(int i=FutureTime; i<=DateTime.Now.Year; i--)
-            //{
-            //StaticBalance = (BookValue - 0)/Year;
-            //RemainingBalance = BookValue - StaticBalance;
-
-            // Console.WriteLine("Value of Remaining Balance: {0}", RemainingBalance);
-            // }
+            
 
         }
 
